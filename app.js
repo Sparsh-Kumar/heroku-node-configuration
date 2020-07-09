@@ -55,6 +55,34 @@ app.get ('/', (req, res) => {
 
 })
 
+/* Showing all the docs */
+app.get ('/show', (req, res) => {
+
+    UserModel.find({})
+
+    .then((foundDoc) => {
+
+        return res.status(200).send({
+
+            status: 'Success',
+            foundDoc
+
+        })
+
+    })
+
+    .catch((error) => {
+
+        return res.status (400).send({
+
+            status: 'Failure',
+            errorMessage:error.message
+
+        })
+    })
+
+})
+
 
 /* Listening for Connections */
 app.listen(port, () => {
